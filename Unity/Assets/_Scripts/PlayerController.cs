@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
     public int playerNo;
 
     //character specific attributes
-    public int moveSpeed;
     public int jumpHeight;
 
 	// Use this for initialization
