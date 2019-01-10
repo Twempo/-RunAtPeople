@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    //player specific attributes
+    public int playerNo;
+
+    //character specific attributes
+    public int moveSpeed;
+    public int jumpHeight;
 
 	// Use this for initialization
 	void Start () {
@@ -13,4 +19,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    //Physics stuff
+    void FixedUpdate() {
+        
+    }
 }
