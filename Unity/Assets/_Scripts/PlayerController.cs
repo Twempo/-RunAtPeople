@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     //universal attributes
     Rigidbody2D rb2d;
+    private int direction; // 1 = right, -1 = left
 
     //player specific attributes
     public int playerNo;
@@ -16,15 +17,16 @@ public class PlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        direction = 1;
 	}
 
     //Physics stuff
     void FixedUpdate() {
-        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input)
+        rb2d.velocity.Set(moveSpeed*direction, rb2d.velocity.y);
+        //rb2d.GetContacts().
+    }
+
+    void switchDirection() {
+        direction *= -1;
     }
 }
