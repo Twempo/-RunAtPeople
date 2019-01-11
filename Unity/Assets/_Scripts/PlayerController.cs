@@ -6,12 +6,12 @@ public class PlayerController : MonoBehaviour {
     //universal attributes
     Rigidbody2D rb2d;
 
-
     //player specific attributes
     public int playerNo;
 
     //character specific attributes
     public int jumpHeight;
+    public int moveSpeed;
 
 	// Use this for initialization
 	void Start () {
