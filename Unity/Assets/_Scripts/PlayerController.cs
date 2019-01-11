@@ -25,6 +25,6 @@ public class PlayerController : MonoBehaviour {
 
     //Physics stuff
     void FixedUpdate() {
-        
+        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input)
     }
 }
