@@ -8,6 +8,15 @@ public class PlayerController : MonoBehaviour {
     public int direction; // 1 = right, -1 = left
     List<Collider2D> ObjectsTouchingFeet;
 
+    GameObject playerOne;
+    GameObject playerTwo;
+
+    private void Awake()
+    {
+        playerOne = GameObject.Find("PlayerOne");
+        playerTwo = GameObject.Find("PlayerTwo");
+    }
+
     //player specific attributes
     public int playerNo;
 
@@ -31,6 +40,7 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
         rb2d.velocity = (new Vector2(moveSpeed * direction, rb2d.velocity.y));
 
+
         //rb2d.GetContacts().
         if ((Input.GetAxis("P1.Jump") > 0)&&playerNo==1&&ObjectsTouchingFeet.ToArray().Length>0) {
             rb2d.AddForce(Vector2.up * jumpForce);
@@ -46,6 +56,11 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>());
+        }
+
         ObjectsTouchingFeet.Add(collision);
     }
 
