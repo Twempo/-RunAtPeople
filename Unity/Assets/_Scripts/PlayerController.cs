@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         ObjectsTouchingFeet = new List<Collider2D>();
-        jumpForce *= 550;
+        jumpForce *= 732;
 	}
 	
 	// Update is called once per frame
