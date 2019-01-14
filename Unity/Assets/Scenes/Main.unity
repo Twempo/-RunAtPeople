@@ -193,8 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNo: 1
-  jumpForce: 1.1
-  moveSpeed: 0
+  jumpForce: 1
+  moveSpeed: 50
 --- !u!61 &54599844
 BoxCollider2D:
   m_ObjectHideFlags: 0
