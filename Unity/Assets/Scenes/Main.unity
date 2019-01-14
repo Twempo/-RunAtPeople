@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 54599840}
   - component: {fileID: 54599842}
-  - component: {fileID: 54599841}
   - component: {fileID: 54599843}
   - component: {fileID: 54599844}
   m_Layer: 0
@@ -146,21 +145,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &54599841
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 54599839}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!50 &54599842
 Rigidbody2D:
   serializedVersion: 4
@@ -176,10 +160,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4a46d88a55e1d254480f32b78a176b9c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &54599843
 MonoBehaviour:
@@ -192,9 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab12d53e5a662f468756b127b23b83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 1
+  footCollider: {fileID: 54599844}
   playerNo: 1
   jumpForce: 1
-  moveSpeed: 50
+  moveSpeed: 5
 --- !u!61 &54599844
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -203,7 +189,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 54599839}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4a46d88a55e1d254480f32b78a176b9c, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -218,7 +204,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.05}
+  m_Size: {x: 0.98, y: 0.05}
   m_EdgeRadius: 0
 --- !u!1 &510032421
 GameObject:
@@ -260,6 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130511172}
   - component: {fileID: 1130511173}
+  - component: {fileID: 1130511174}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -326,6 +313,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1130511174
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1130511171}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &1188343605
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +337,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1188343607}
   - component: {fileID: 1188343610}
-  - component: {fileID: 1188343609}
   - component: {fileID: 1188343606}
   - component: {fileID: 1188343608}
   m_Layer: 0
@@ -356,9 +357,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab12d53e5a662f468756b127b23b83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: -1
+  footCollider: {fileID: 1188343608}
   playerNo: 2
   jumpForce: 1
-  moveSpeed: 0
+  moveSpeed: 5
 --- !u!4 &1188343607
 Transform:
   m_ObjectHideFlags: 0
@@ -396,23 +399,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.05}
+  m_Size: {x: 0.98, y: 0.05}
   m_EdgeRadius: 0
---- !u!70 &1188343609
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1188343605}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!50 &1188343610
 Rigidbody2D:
   serializedVersion: 4
@@ -428,10 +416,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4a46d88a55e1d254480f32b78a176b9c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &1235407977
 GameObject:
@@ -543,8 +531,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1431110288}
   - component: {fileID: 1431110289}
+  - component: {fileID: 1431110290}
   m_Layer: 0
-  m_Name: Player Sprite
+  m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,6 +598,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &1431110290
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1431110287}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &1681405994
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     public int direction; // 1 = right, -1 = left
     List<Collider2D> ObjectsTouchingFeet;
 
+    public Collider2D footCollider;
+
     //player specific attributes
     public int playerNo;
 
@@ -20,11 +22,6 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         ObjectsTouchingFeet = new List<Collider2D>();
         jumpForce *= 732;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
     //Physics stuff
@@ -39,6 +36,8 @@ public class PlayerController : MonoBehaviour {
         {
             rb2d.AddForce(Vector2.up * jumpForce);
         }
+        foreach (Collider2D c in ObjectsTouchingFeet)
+            Debug.Log(gameObject.name + ": " + c.name); 
     }
 
     void switchDirection() {
@@ -49,7 +48,8 @@ public class PlayerController : MonoBehaviour {
         ObjectsTouchingFeet.Add(collision);
     }
 
-    void OnTriggerExit2D(Collider2D collision) {
+    void OnTriggerExit2D(Collider2D collision)
+    {
         ObjectsTouchingFeet.Remove(collision);
     }
 }
