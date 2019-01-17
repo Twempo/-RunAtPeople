@@ -69,7 +69,12 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Player")
         {
-            Physics2D.IgnoreCollision(collision, GetComponent<Collider2D>());
+            
+        }
+
+        if(collision.gameObject.tag == "Wall")
+        {
+            switchDirection();
         }
 
         //ObjectsTouchingFeet.Add(collision);
