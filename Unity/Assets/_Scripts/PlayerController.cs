@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 
     //player specific attributes
     public int playerNo;
+    private Vector2 playerPos;
     private float timeToJump;
     private float timeToBoof;
 
@@ -36,15 +37,23 @@ public class PlayerController : MonoBehaviour {
         jumpForce *= 732;
         timeToJump = 0;
         timeToBoof = 0;
+        playerPos = new Vector2(transform.position.x, transform.position.y + 1f);
 	}
 
     private void Update() {
-        if(timeToJump > 0) {
+        playerPos = new Vector2(transform.position.x, transform.position.y + 1f);
+        if (timeToJump > 0) {
             timeToJump -= Time.deltaTime;
         }
         if(timeToBoof > 0) {
             timeToBoof -= Time.deltaTime;
         }
+        /*if(Physics2D.Raycast(playerPos, new Vector2(-1,0)).distance <= .75 && Physics2D.Raycast(playerPos, new Vector2(-1, 0)).collider.tag == "Player")
+        {
+            Debug.Log("huzzah!");
+            SwitchDirection();
+        }*/
+        //Debug.Log(playerNo + "" + playerPos + "" + Physics2D.Raycast(playerPos, new Vector2(direction, 0)).distance);
     }
 
     //Physics stuff
@@ -58,8 +67,9 @@ public class PlayerController : MonoBehaviour {
         {
             Jump();
         }
-        foreach (Collider2D c in ObjectsTouchingFeet)
-            Debug.Log(gameObject.name + ": " + c.name); 
+
+        /*foreach (Collider2D c in ObjectsTouchingFeet)
+            Debug.Log(gameObject.name + ": " + c.name);*/
     }
 
     IEnumerator DirSwitchSpeed()
@@ -82,28 +92,39 @@ public class PlayerController : MonoBehaviour {
         timeToJump = .5f;
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player" && timeToBoof <=0)
-        {
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75) {
+            Debug.Log(playerNo + " HIT SOMEONE AT: " + collision.transform.position.x + "," + collision.transform.position.y);
+            Win(playerNo);
+        }
+        else if (collision.gameObject.tag == "Player" && timeToBoof <= 0) {
             SwitchDirection();
         }
-        if (collision.gameObject.tag == "Wall")
+        if (/*collision.gameObject.tag == "Wall"*/(collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos,new Vector2(direction,0)).distance<=.75))
         {
+            Debug.Log(playerNo + "" + playerPos + "" + Physics2D.Raycast(playerPos, new Vector2(direction, 0)).distance);
             SwitchDirection();
             if (((Input.GetAxis("P1.Jump") > 0) && playerNo == 1) || ((Input.GetAxis("P2.Jump") > 0) && playerNo == 2)) {
                 Jump();
             }
         }
         //ObjectsTouchingFeet.Add(collision);
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
         {
             ObjectsTouchingFeet.Add(collision);
-            Debug.Log("halp");
+            //Debug.Log("halp");
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
         ObjectsTouchingFeet.Remove(collision);
+    }
+
+    void Win(int playerNo)
+    {
+
     }
 }

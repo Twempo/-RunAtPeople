@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab12d53e5a662f468756b127b23b83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 1
+  direction: -1
   footCollider: {fileID: 54599844}
   playerNo: 1
   jumpForce: 1
@@ -357,7 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab12d53e5a662f468756b127b23b83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: -1
+  direction: 1
   footCollider: {fileID: 1188343608}
   playerNo: 2
   jumpForce: 1
