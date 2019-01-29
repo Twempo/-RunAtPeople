@@ -67,7 +67,10 @@ public class PlayerController : MonoBehaviour {
         {
             Jump();
         }
-
+        if (playerNo == 1 ? (Input.GetAxis("P1.Fall") > 0) : (Input.GetAxis("P2.Fall") > 0))
+            rb2d.gravityScale = 3;
+        else
+            rb2d.gravityScale = 1;
         /*foreach (Collider2D c in ObjectsTouchingFeet)
             Debug.Log(gameObject.name + ": " + c.name);*/
     }
