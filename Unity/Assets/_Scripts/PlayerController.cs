@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     //universal attributes
+    public GameManager gameManager;
+
     Rigidbody2D rb2d;
     public int direction; // 1 = right, -1 = left
     float speedMulti = 1;
