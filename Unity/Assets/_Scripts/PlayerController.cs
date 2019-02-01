@@ -8,15 +8,13 @@ public class PlayerController : MonoBehaviour {
     public int direction; // 1 = right, -1 = left
     float speedMulti = 1;
     List<Collider2D> ObjectsTouchingFeet;
-    
-    GameObject playerOne;
-    GameObject playerTwo;
-    
+
+    public Collider2D player1Collider;
+    public Collider2D player2Collider;
+
     private void Awake()
     {
         //Time.timeScale = (.25f);
-        playerOne = GameObject.Find("PlayerOne");
-        playerTwo = GameObject.Find("PlayerTwo");
     }
     public Collider2D footCollider;
 
@@ -60,7 +58,9 @@ public class PlayerController : MonoBehaviour {
     void FixedUpdate() {
         rb2d.velocity = (new Vector2(moveSpeed * direction, rb2d.velocity.y));
         //rb2d.GetContacts().
+        //Debug.Log(ObjectsTouchingFeet.ToArray().Length);
         if ((Input.GetAxis("P1.Jump") > 0)&&playerNo==1&&ObjectsTouchingFeet.ToArray().Length>0 && timeToJump <= 0) {
+            Debug.Log("In the jump mehtod");
             Jump();
         }
         if ((Input.GetAxis("P2.Jump") > 0) && playerNo == 2 && ObjectsTouchingFeet.ToArray().Length > 0 && timeToJump <= 0)
@@ -68,18 +68,22 @@ public class PlayerController : MonoBehaviour {
             Jump();
         }
         if (playerNo == 1 ? (Input.GetAxis("P1.Fall") > 0) : (Input.GetAxis("P2.Fall") > 0))
-            rb2d.gravityScale = 3;
+            rb2d.gravityScale = 4;
         else
             rb2d.gravityScale = 1;
         /*foreach (Collider2D c in ObjectsTouchingFeet)
             Debug.Log(gameObject.name + ": " + c.name);*/
-        if (/*collision.gameObject.tag == "Wall"*/(Physics2D.Raycast(playerPos+ new Vector2(direction, 0)*.5f, new Vector2(direction, 0)).distance <= .1)&&timeToBoof<=0)
+        if (/*collision.gameObject.tag == "Wall"*/(/*Physics2D.Raycast(playerPos + new Vector2(direction, 0) * .5f, new Vector2(direction, 0)).collider.name*/ Physics2D.Raycast(playerPos+ new Vector2(direction, 0)*.5f, new Vector2(direction, 0)).distance <= .1)&&timeToBoof<=0)
         {
-            Debug.Log(playerNo + "" + playerPos + "" + Physics2D.Raycast(playerPos, new Vector2(direction, 0)).point);
-            Debug.DrawRay(playerPos, new Vector2(direction, 0), Color.red, .5f);
+            //Debug.Log(playerNo + "" + playerPos + "" + Physics2D.Raycast(playerPos, new Vector2(direction, 0)).point);
+            //Debug.DrawRay(playerPos, new Vector2(direction, 0), Color.red, .5f);
+            //Debug.Log(Physics2D.Raycast(playerPos + new Vector2(direction, 0) * .5f, new Vector2(direction, 0)).collider.name);
+            if (Physics2D.Raycast(playerPos + new Vector2(direction, 0) * .5f, new Vector2(direction, 0)).collider == (playerNo == 1 ? player1Collider : player2Collider))
+                return;
             SwitchDirection();
-            if (((Input.GetAxis("P1.Jump") > 0) && playerNo == 1) || ((Input.GetAxis("P2.Jump") > 0) && playerNo == 2))
+            if (((Input.GetAxis("P1.Jump") > 0) && playerNo == 1) || ((Input.GetAxis("P2.Jump") > 0) && playerNo == 2) && ObjectsTouchingFeet.ToArray().Length > 0 && timeToJump <= 0)
             {
+                //Debug.Log("HERE");
                 Jump();
             }
         }
@@ -107,20 +111,22 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.gameObject.tag == "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75) {
+        //ObjectsTouchingFeet.Add(collision);
+        
+        if (collision.gameObject.tag == "Player" && Physics2D.Raycast(playerPos, new Vector2(0, 1)).distance <= .75) {
             Debug.Log(playerNo + " HIT SOMEONE AT: " + collision.transform.position.x + "," + collision.transform.position.y);
+            Debug.DrawRay(playerPos, new Vector2(direction, 0), Color.cyan, .5f);
             Win(playerNo);
+        }
+        if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
+        {
+              ObjectsTouchingFeet.Add(collision);
         }
         else if (collision.gameObject.tag == "Player" && timeToBoof <= 0) {
             SwitchDirection();
         }
         
-        //ObjectsTouchingFeet.Add(collision);
-        if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
-        {
-            ObjectsTouchingFeet.Add(collision);
-        }
+        
     }
 
     void OnTriggerExit2D(Collider2D collision)
