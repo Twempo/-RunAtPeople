@@ -51,7 +51,8 @@ public class PlayerController : MonoBehaviour {
         if(timeToBoof > 0) {
             timeToBoof -= Time.deltaTime;
         }
-        anim.SetInteger("Direction", direction);
+        if (anim != null)
+            anim.SetInteger("Direction", direction);
         /*if(Physics2D.Raycast(playerPos, new Vector2(-1,0)).distance <= .75 && Physics2D.Raycast(playerPos, new Vector2(-1, 0)).collider.tag == "Player")
         {
             Debug.Log("huzzah!");
@@ -93,7 +94,8 @@ public class PlayerController : MonoBehaviour {
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         rb2d.AddForce(Vector2.up * jumpForce);
         timeToJump = .5f;
-        anim.SetBool("Jump", true);
+        if (anim != null)
+            anim.SetBool("Jump", true);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -118,7 +120,8 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
         {
             ObjectsTouchingFeet.Add(collision);
-            anim.SetBool("Jump", false);
+            if (anim != null)
+                anim.SetBool("Jump", false);
             //Debug.Log("halp");
         }
     }
