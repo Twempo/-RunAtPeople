@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 484461240}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,6 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd69eea66cb39be43a3035566c461943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelBuildIndex: 1
+  timeToReset: 0
 --- !u!1 &590678506
 GameObject:
   m_ObjectHideFlags: 0
