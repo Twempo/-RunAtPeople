@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public int LevelBuildIndex = 1;
     public float timeToReset = 0;
 
+    int[] points;
+
+    public Text[] pointsText;
+
     private void Awake() {
         SceneManager.LoadSceneAsync(LevelBuildIndex, LoadSceneMode.Additive);
+        points = new int[2];
     }
 
     public void ResetLevel() {
@@ -25,6 +31,11 @@ public class GameManager : MonoBehaviour {
             timeToReset -= Time.deltaTime;
     }
 
+    public void Win(int playerNo) {
+        points[playerNo - 1]++;
+        pointsText[playerNo - 1].text = points[playerNo - 1] + "";
+        ResetLevel();
+    }
 
     IEnumerator FollowThroughA(AsyncOperation op) {
         while (!op.isDone) {

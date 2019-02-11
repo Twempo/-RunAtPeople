@@ -20,10 +20,10 @@ public class PlayerController : MonoBehaviour {
     public Collider2D player1Collider;
     public Collider2D player2Collider;
 
-    private void Awake()
-    {
-        //Time.timeScale = (.25f);
+    private void Awake() {
+        gameManager = FindObjectOfType<GameManager>();
     }
+
     public Collider2D footCollider;
 
     //player specific attributes
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour {
         }
         if(character == Character.Boof)
         {
-            jumpForce = 1.4f;
+            jumpForce = 1.425f;
             moveSpeed = 12.5f;
             footCollider.offset = new Vector2(0, -.78f);
         }
