@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour {
         {
             jumpForce = 1.425f;
             moveSpeed = 12.5f;
-            footCollider.offset = new Vector2(0, -.78f);
+            footCollider.offset = new Vector2(0, -.7f);
         }
         jumpForce *= 732;
     }
