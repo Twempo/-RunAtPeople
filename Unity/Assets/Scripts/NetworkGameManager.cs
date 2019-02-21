@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
-public class NetworkGameManager : MonoBehaviour {
+public class NetworkGameManager : NetworkBehaviour {
     public int LevelBuildIndex = 1;
     public float timeToReset = 0;
 
@@ -13,7 +14,7 @@ public class NetworkGameManager : MonoBehaviour {
     public Text[] pointsText;
 
     private void Awake() {
-        SceneManager.LoadSceneAsync(LevelBuildIndex, LoadSceneMode.Additive);
+        //SceneManager.LoadSceneAsync(LevelBuildIndex, LoadSceneMode.Additive);
         points = new int[2];
     }
 
@@ -41,15 +42,6 @@ public class NetworkGameManager : MonoBehaviour {
         while (!op.isDone) {
             yield return new WaitForEndOfFrame();
         }
-        StartCoroutine(FollowThroughB(SceneManager.LoadSceneAsync(LevelBuildIndex, LoadSceneMode.Additive)));
-    }
-
-    IEnumerator FollowThroughB(AsyncOperation op) {
-        while (!op.isDone) {
-            yield return new WaitForEndOfFrame();
-        }
-        foreach (PlayerController player in FindObjectsOfType<PlayerController>()) {
-
-        }
+        SceneManager.LoadSceneAsync(LevelBuildIndex, LoadSceneMode.Additive);
     }
 }
