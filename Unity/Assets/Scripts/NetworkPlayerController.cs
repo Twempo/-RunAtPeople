@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class NetworkPlayerController : MonoBehaviour
-{
+public class NetworkPlayerController : NetworkBehaviour {
     public enum Character { Boof, Goon }
     public Character character;
 
@@ -155,3 +155,4 @@ public class NetworkPlayerController : MonoBehaviour
     void Win(int playerNo) {
 
     }
+}
