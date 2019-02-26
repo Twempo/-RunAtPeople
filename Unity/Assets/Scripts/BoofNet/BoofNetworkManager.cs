@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 namespace BoofNet {
     [AddComponentMenu("BoofNet/BoofNetworkManager")]
     public class BoofNetworkManager : MonoBehaviour {
-        private static INetworkTransport s_ActiveTransport = (INetworkTransport)new DefaultNetworkTransport();
+        private static INetworkTransport s_ActiveTransport = (INetworkTransport)new BoofNetworkTransport();
 
     }
 }

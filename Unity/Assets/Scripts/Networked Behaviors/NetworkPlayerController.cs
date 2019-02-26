@@ -57,7 +57,7 @@ public class NetworkPlayerController : NetworkBehaviour {
         }
         jumpForce *= 732;
     }
-
+    
     private void Update() {
         playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
         if (timeToJump > 0) {
