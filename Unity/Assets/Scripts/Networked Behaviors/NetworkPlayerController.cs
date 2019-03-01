@@ -8,7 +8,7 @@ public class NetworkPlayerController : NetworkBehaviour {
     public Character character;
 
     //universal attributes
-    public GameManager gameManager;
+    public NetworkGameManager gameManager;
 
     Rigidbody2D rb2d;
     public int direction; // 1 = right, -1 = left
@@ -22,7 +22,7 @@ public class NetworkPlayerController : NetworkBehaviour {
     public Collider2D player2Collider;
 
     private void Awake() {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<NetworkGameManager>();
     }
 
     public Collider2D footCollider;
@@ -155,4 +155,9 @@ public class NetworkPlayerController : NetworkBehaviour {
     void Win(int playerNo) {
 
     }
+
+    // ******************************************** NETWORKED BEHAVIORS ******************************************** //
+
+    public float horizontalInput;
+    public float jumpInput;
 }

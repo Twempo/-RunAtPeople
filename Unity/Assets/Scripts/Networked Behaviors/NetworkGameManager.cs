@@ -9,6 +9,8 @@ public class NetworkGameManager : NetworkBehaviour {
     public int LevelBuildIndex = 1;
     public float timeToReset = 0;
 
+    public static List<NetworkPlayerClient> players = new List<NetworkPlayerClient>();
+
     int[] points;
 
     public Text[] pointsText;

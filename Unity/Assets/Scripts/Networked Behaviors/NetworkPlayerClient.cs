@@ -8,9 +8,17 @@ public class NetworkPlayerClient : NetworkBehaviour {
     public GameObject Goon;
     public GameObject Head;
 
-    public PlayerController playerController;
+    public NetworkPlayerController playerController;
+    public NetworkPlayerInput playerInput;
 
     private void Awake() {
-        
+
+    }
+
+    static int numPlayers = 0;
+
+    [ClientRpc]
+    void RpcSetPlayerNo(int num) {
+        numPlayers = num;
     }
 }
