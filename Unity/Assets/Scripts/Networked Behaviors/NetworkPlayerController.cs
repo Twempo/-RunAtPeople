@@ -29,6 +29,8 @@ public class NetworkPlayerController : NetworkBehaviour {
 
     //player specific attributes
     public int playerNo;
+    public int playerControlSpot;
+
     private Vector2 playerPos;
     private float timeToJump;
     private float timeToBoof;
@@ -157,7 +159,6 @@ public class NetworkPlayerController : NetworkBehaviour {
     }
 
     // ******************************************** NETWORKED BEHAVIORS ******************************************** //
-
-    public float horizontalInput;
+    
     public float jumpInput;
 }
