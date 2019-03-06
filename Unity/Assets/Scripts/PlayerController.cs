@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    public enum Character {Boof, Goon}
+    public enum Character {Boof, Goon, Kirk}
     public Character character;
 
     //universal attributes
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour {
     //character specific attributes
     public float jumpForce;
     public float moveSpeed;
+    public float jumpSpeedMulti = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -55,6 +56,12 @@ public class PlayerController : MonoBehaviour {
             jumpForce = 1.425f;
             moveSpeed = 12.5f;
             footCollider.offset = new Vector2(0, -.76f);
+        }
+        if (character == Character.Kirk) {
+            jumpForce = 1.7f;
+            moveSpeed = 9f;
+            jumpSpeedMulti = 1.7f;
+            footCollider.offset = new Vector2(0, -.86f);
         }
         jumpForce *= 732;
     }
@@ -79,7 +86,10 @@ public class PlayerController : MonoBehaviour {
 
     //Physics stuff
     void FixedUpdate() {
-        rb2d.velocity = (new Vector2(moveSpeed * direction, rb2d.velocity.y));
+        if(anim.GetBool("Jump"))
+            rb2d.velocity = (new Vector2(moveSpeed * direction * jumpSpeedMulti, rb2d.velocity.y));
+        else
+            rb2d.velocity = (new Vector2(moveSpeed * direction, rb2d.velocity.y));
         //rb2d.GetContacts().
         //Debug.Log(playerNo + ", " + ObjectsTouchingFeet.ToArray().ToString());
         if ((Input.GetAxis("P1.Jump") > 0)&&playerNo==1&&ObjectsTouchingFeet.ToArray().Length>0 && timeToJump <= 0) {
