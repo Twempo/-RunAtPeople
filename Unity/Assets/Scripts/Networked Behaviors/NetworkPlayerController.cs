@@ -28,6 +28,8 @@ public class NetworkPlayerController : NetworkBehaviour {
 
     //player specific attributes
     public int playerNo;
+    public int playerControlSpot;
+
     private Vector2 playerPos;
     private float timeToJump;
     private float timeToBoof;
@@ -134,6 +136,5 @@ public class NetworkPlayerController : NetworkBehaviour {
             SwitchDirection();
         }
     }
-
     void OnTriggerExit2D(Collider2D collision){ ObjectsTouchingFeet.Remove(collision); }
 }

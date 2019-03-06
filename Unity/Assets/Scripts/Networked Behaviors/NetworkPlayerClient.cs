@@ -11,14 +11,23 @@ public class NetworkPlayerClient : NetworkBehaviour {
     public NetworkPlayerController playerController;
     public NetworkPlayerInput playerInput;
 
+    public bool spotChosen = false;
+    public bool lookingForSpot = true;
+
     private void Awake() {
 
+    }
+
+    private void Update() {
+        
     }
 
     static int numPlayers = 0;
 
     [ClientRpc]
-    void RpcSetPlayerNo(int num) {
+    void RpcSetPlayerNumAndSpot(int num, int spot) {
         numPlayers = num;
+        playerController.playerNo = num;
+        playerController.playerControlSpot = spot;
     }
 }
