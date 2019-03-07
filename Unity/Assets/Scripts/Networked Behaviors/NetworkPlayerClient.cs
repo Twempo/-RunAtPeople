@@ -15,7 +15,8 @@ public class NetworkPlayerClient : NetworkBehaviour {
     public bool lookingForSpot = true;
 
     private void Awake() {
-
+        CmdAddPlayer(this);
+        playerInput.controller = playerController;
     }
 
     private void Update() {
@@ -24,10 +25,27 @@ public class NetworkPlayerClient : NetworkBehaviour {
 
     static int numPlayers = 0;
 
+    [Command]
+    void CmdAddPlayer(NetworkPlayerClient client) {
+        numPlayers++;
+        RpcUpdateNumPlayers(numPlayers);
+        RpcSetPlayerNumAndSpot(numPlayers);
+    }
+
+    [ClientRpc]
+    void RpcUpdateNumPlayers(int newNum) {
+        numPlayers = newNum;
+    }
+
     [ClientRpc]
     void RpcSetPlayerNumAndSpot(int num, int spot) {
-        numPlayers = num;
         playerController.playerNo = num;
         playerController.playerControlSpot = spot;
+    }
+
+    [ClientRpc]
+    void RpcSetPlayerNumAndSpot(int num) {
+        playerController.playerNo = num;
+        playerController.playerControlSpot = num;
     }
 }
