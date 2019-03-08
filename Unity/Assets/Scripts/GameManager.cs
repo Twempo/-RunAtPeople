@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Win(int playerNo) {
+
         points[playerNo - 1]++;
         pointsText[playerNo - 1].text = points[playerNo - 1] + "";
         ResetLevel();

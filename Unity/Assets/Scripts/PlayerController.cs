@@ -15,20 +15,18 @@ public class PlayerController : MonoBehaviour {
 
     public Animator anim;
 
-    List<Collider2D> ObjectsTouchingFeet;
-
-    public Collider2D player1Collider;
-    public Collider2D player2Collider;
+    public List<Collider2D> ObjectsTouchingFeet;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
     }
 
     public Collider2D footCollider;
+    public Collider2D headCollider;
 
     //player specific attributes
     public int playerNo;
-    private Vector2 playerPos;
+    public Vector2 playerPos;
     private float timeToJump;
     private float timeToBoof;
 
@@ -47,21 +45,27 @@ public class PlayerController : MonoBehaviour {
 
         if(character == Character.Goon)
         {
-            jumpForce = 1.55f;
+            jumpForce = 1.875f;
             moveSpeed = 11f;
             footCollider.offset = new Vector2(0, -.86f);
+            headCollider.offset = new Vector2(0, .69f);
+            headCollider.gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
         if(character == Character.Boof)
         {
-            jumpForce = 1.425f;
-            moveSpeed = 12.5f;
-            footCollider.offset = new Vector2(0, -.76f);
+            jumpForce = 1.525f;
+            moveSpeed = 14f;
+            footCollider.offset = new Vector2(0, -.7f);
+            headCollider.offset = new Vector2(0, .39f);
+            headCollider.gameObject.transform.localScale = new Vector3(.65f, 1, 1);
         }
         if (character == Character.Kirk) {
             jumpForce = 1.7f;
             moveSpeed = 9f;
             jumpSpeedMulti = 1.7f;
             footCollider.offset = new Vector2(0, -.86f);
+            headCollider.offset = new Vector2(0, .69f);
+            headCollider.gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
         jumpForce *= 732;
     }
@@ -111,8 +115,6 @@ public class PlayerController : MonoBehaviour {
             //Debug.Log(playerNo + "" + playerPos + "" + Physics2D.Raycast(playerPos, new Vector2(direction, 0)).point);
             Debug.DrawRay(playerPos, new Vector2(direction, 0), Color.red, .5f);
             //Debug.Log(Physics2D.Raycast(playerPos + new Vector2(direction, 0) * .5f, new Vector2(direction, 0)).collider.name);
-            if (Physics2D.Raycast(playerPos + new Vector2(direction, 0) * .5f, new Vector2(direction, 0)).collider == (playerNo == 1 ? player1Collider : player2Collider))
-                return;
             SwitchDirection();
             if (((Input.GetAxis("P1.Jump") > 0) && playerNo == 1) || ((Input.GetAxis("P2.Jump") > 0) && playerNo == 2) && ObjectsTouchingFeet.ToArray().Length > 0 && timeToJump <= 0)
             {
@@ -132,7 +134,7 @@ public class PlayerController : MonoBehaviour {
     void SwitchDirection() {
         direction *= -1;
         //StartCoroutine(DirSwitchSpeed());
-        timeToBoof = .35f;  
+        //timeToBoof = .35f;  
     }
 
     void Jump()
@@ -154,18 +156,6 @@ public class PlayerController : MonoBehaviour {
             Debug.DrawRay(playerPos, new Vector2(direction, 0), Color.cyan, .5f);
             SwitchDirection();
         }
-        if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
-        {
-            ObjectsTouchingFeet.Add(collision);
-            if (anim != null)
-                anim.SetBool("Jump", false);
-            //Debug.Log("halp");
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        ObjectsTouchingFeet.Remove(collision);
     }
 
     void Win(int playerNo)

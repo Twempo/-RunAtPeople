@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Head : MonoBehaviour {
-    public int playerNo;
+    public int targetNo;
+    public Collider2D colliderToLookFor;
 
     public GameManager gameManager;
 
@@ -12,7 +13,7 @@ public class Head : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player") && gameManager != null)
-            gameManager.Win(playerNo);
+        if (collision==colliderToLookFor)
+            gameManager.Win(targetNo);
     }
 }
