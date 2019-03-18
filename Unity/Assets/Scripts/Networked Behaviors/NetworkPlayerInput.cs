@@ -11,7 +11,7 @@ public class NetworkPlayerInput : NetworkBehaviour {
     public NetworkPlayerController controller;
 
     private void Update() {
-        CmdSendInput(Input.GetAxis("P" + controller.playerControlSpot + ".Jump"));
+        CmdSendInput(Input.GetAxis("P" + controller.playerNo + ".Jump"));
     }
 
     /**

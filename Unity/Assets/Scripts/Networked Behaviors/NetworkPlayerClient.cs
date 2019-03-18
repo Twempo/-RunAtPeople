@@ -17,6 +17,8 @@ public class NetworkPlayerClient : NetworkBehaviour {
     private void Awake() {
         CmdAddPlayer(this);
         playerInput.controller = playerController;
+        Boof.SetActive(true);
+        Head.SetActive(true);
     }
 
     private void Update() {
@@ -29,7 +31,7 @@ public class NetworkPlayerClient : NetworkBehaviour {
     void CmdAddPlayer(NetworkPlayerClient client) {
         numPlayers++;
         RpcUpdateNumPlayers(numPlayers);
-        RpcSetPlayerNumAndSpot(numPlayers);
+        RpcSetPlayerNum(numPlayers);
     }
 
     [ClientRpc]
@@ -38,14 +40,7 @@ public class NetworkPlayerClient : NetworkBehaviour {
     }
 
     [ClientRpc]
-    void RpcSetPlayerNumAndSpot(int num, int spot) {
+    void RpcSetPlayerNum(int num) {
         playerController.playerNo = num;
-        playerController.playerControlSpot = spot;
-    }
-
-    [ClientRpc]
-    void RpcSetPlayerNumAndSpot(int num) {
-        playerController.playerNo = num;
-        playerController.playerControlSpot = num;
     }
 }

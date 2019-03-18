@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Head : MonoBehaviour {
-    public int playerNo;
+    public int playerToScore;
 
     public GameManager gameManager;
 
@@ -13,6 +13,6 @@ public class Head : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Player"))
-            gameManager.Win(playerNo);
+            gameManager.Win(playerToScore);
     }
 }
