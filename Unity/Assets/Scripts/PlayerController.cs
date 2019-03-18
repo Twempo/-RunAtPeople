@@ -150,28 +150,31 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision)
     {
         //ObjectsTouchingFeet.Add(collision);
-        
+
         /*if (collision.gameObject.tag == "Player" && Physics2D.Raycast(playerPos, new Vector2(0, 1)).distance <= .75) {
             Debug.Log(playerNo + " HIT SOMEONE AT: " + collision.transform.position.x + "," + collision.transform.position.y);
             Debug.DrawRay(playerPos, new Vector2(direction, 0), Color.cyan, .5f);
             SwitchDirection();
         }*/
-        if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
+
+        /*if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
         {
             ObjectsTouchingFeet.Add(collision);
             if (anim != null)
                 anim.SetBool("Jump", false);
             //Debug.Log("halp");
-        }
+        }*/
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    /*void OnTriggerExit2D(Collider2D collision)
     {
         ObjectsTouchingFeet.Remove(collision);
-    }
+    }*/
 
+    /*
     void Win(int playerNo)
     {
 
     }
+    */
 }
