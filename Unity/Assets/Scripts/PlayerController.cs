@@ -155,9 +155,6 @@ public class PlayerController : MonoBehaviour {
             Debug.Log(playerNo + " HIT SOMEONE AT: " + collision.transform.position.x + "," + collision.transform.position.y);
             Debug.DrawRay(playerPos, new Vector2(direction, 0), Color.cyan, .5f);
             SwitchDirection();
-<<<<<<< HEAD
-        }
-=======
         }*/
         if (collision.gameObject.tag != "Player" && Physics2D.Raycast(playerPos, new Vector2(0, -1)).distance <= .75)
         {
@@ -171,7 +168,6 @@ public class PlayerController : MonoBehaviour {
     void OnTriggerExit2D(Collider2D collision)
     {
         ObjectsTouchingFeet.Remove(collision);
->>>>>>> c5db319b889de8ef2822963caae350aa39d15544
     }
 
     void Win(int playerNo)
