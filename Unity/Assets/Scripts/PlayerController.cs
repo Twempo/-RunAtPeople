@@ -94,8 +94,8 @@ public class PlayerController : MonoBehaviour {
             rb2d.velocity = (new Vector2(moveSpeed * direction * jumpSpeedMulti, rb2d.velocity.y));
         else
             rb2d.velocity = (new Vector2(moveSpeed * direction, rb2d.velocity.y));
-        //rb2d.GetContacts().
-        //Debug.Log(playerNo + ", " + ObjectsTouchingFeet.ToArray().ToString());
+        //rb2d.GetContacts()
+        Debug.Log(playerNo + ", " + ObjectsTouchingFeet.ToArray()[0].ToString());
         if ((Input.GetAxis("P1.Jump") > 0)&&playerNo==1&&ObjectsTouchingFeet.ToArray().Length>0 && timeToJump <= 0) {
             Jump();
         }
@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour {
         //Debug.Log("In the jump mehtod");
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
         rb2d.AddForce(Vector2.up * jumpForce);
-        timeToJump = .5f;
+        //timeToJump = .5f;
         if (anim != null)
             anim.SetBool("Jump", true);
     }

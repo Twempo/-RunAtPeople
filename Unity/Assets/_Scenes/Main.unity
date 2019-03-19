@@ -230,22 +230,22 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1577302346961276, guid: a504e2d1e550be84cad66dbbd23235a0, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1173938953674706, guid: a504e2d1e550be84cad66dbbd23235a0, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114047109222604316, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 2}
       propertyPath: character
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114047109222604316, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 2}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 960941604}
+      objectReference: {fileID: 2071397389}
     - target: {fileID: 114207713224450040, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 2}
       propertyPath: playerNo
@@ -423,6 +423,18 @@ Prefab:
       propertyPath: playerToScore
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1788318996911884, guid: a504e2d1e550be84cad66dbbd23235a0, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173938953674706, guid: a504e2d1e550be84cad66dbbd23235a0, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1349593159530904, guid: a504e2d1e550be84cad66dbbd23235a0, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a504e2d1e550be84cad66dbbd23235a0, type: 2}
   m_IsPrefabAsset: 0
@@ -471,11 +483,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 755111667}
---- !u!95 &960941604 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95785964898143680, guid: a504e2d1e550be84cad66dbbd23235a0,
-    type: 2}
-  m_PrefabInternal: {fileID: 653033891}
 --- !u!70 &1541505884 stripped
 CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 70393013283504296, guid: a504e2d1e550be84cad66dbbd23235a0,
@@ -8432,3 +8439,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2071397389 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95780714160806716, guid: a504e2d1e550be84cad66dbbd23235a0,
+    type: 2}
+  m_PrefabInternal: {fileID: 653033891}
