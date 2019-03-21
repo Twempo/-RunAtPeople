@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 50036155847284714}
   - component: {fileID: 114047109222604316}
   - component: {fileID: 70006582696157700}
+  - component: {fileID: 114995568221079410}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Player
@@ -72,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404284143460550}
   - component: {fileID: 61931234944461006}
+  - component: {fileID: 114143645064029828}
   m_Layer: 0
   m_Name: Foot
   m_TagString: Untagged
@@ -181,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 1788318996911884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4923861077968266}
   m_RootOrder: 2
@@ -219,7 +221,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328458646907364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -8, z: 0}
+  m_LocalPosition: {x: -5, y: -8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4478877820368922}
@@ -434,14 +436,28 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   direction: 1
   anim: {fileID: 95780714160806716}
-  player1Collider: {fileID: 0}
-  player2Collider: {fileID: 0}
+  ObjectsTouchingFeet: []
   footCollider: {fileID: 61931234944461006}
   headCollider: {fileID: 70393013283504296}
-  playerNo: 2
+  maxJumpSpeed: 5
+  playerNo: 1
+  playerPos: {x: 0, y: 0}
+  characterCollider: {fileID: 70006582696157700}
   jumpForce: 1.4
   moveSpeed: 11
   jumpSpeedMulti: 1
+--- !u!114 &114143645064029828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1349593159530904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74059b1734e48124eb4b005113777763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114047109222604316}
 --- !u!114 &114207713224450040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -453,9 +469,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ca6a390eddfc44c8618c07bbb61faf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetNo: 1
-  colliderToLookFor: {fileID: 0}
+  playerToScore: 2
   gameManager: {fileID: 0}
+--- !u!114 &114995568221079410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328458646907364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74059b1734e48124eb4b005113777763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114047109222604316}
 --- !u!212 &212083924685254418
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -584,7 +611,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300020, guid: df230218d06c223418cf604322e8ecf5, type: 3}
-  m_Color: {r: 0.084905684, g: 0.07729621, b: 0.07729621, a: 1}
+  m_Color: {r: 0.8773585, g: 0.1448469, b: 0.1448469, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1

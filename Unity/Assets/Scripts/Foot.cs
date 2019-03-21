@@ -22,8 +22,6 @@ public class Foot : MonoBehaviour {
         catch (Exception e) { }
     }
 
-
-
     void OnTriggerExit2D(Collider2D collision)
     {
         player.ObjectsTouchingFeet.Remove(collision);

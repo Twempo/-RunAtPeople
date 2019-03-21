@@ -23,12 +23,14 @@ public class PlayerController : MonoBehaviour {
 
     public Collider2D footCollider;
     public Collider2D headCollider;
+    public float maxJumpSpeed = 5;
 
     //player specific attributes
     public int playerNo;
     public Vector2 playerPos;
     private float timeToJump;
     private float timeToBoof;
+    public CapsuleCollider2D characterCollider;
 
     //character specific attributes
     public float jumpForce;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour {
         {
             jumpForce = 1.875f;
             moveSpeed = 11f;
+            characterCollider.size = new Vector2(1.62f, .8f);
             footCollider.offset = new Vector2(0, -.86f);
             headCollider.offset = new Vector2(0, .69f);
             headCollider.gameObject.transform.localScale = new Vector3(1, 1, 1);
@@ -54,7 +57,8 @@ public class PlayerController : MonoBehaviour {
         if(character == Character.Boof)
         {
             jumpForce = 1.525f;
-            moveSpeed = 14f;
+            moveSpeed = 15f;
+            characterCollider.size = new Vector2(1.53f, .8f);
             footCollider.offset = new Vector2(0, -.7f);
             headCollider.offset = new Vector2(0, .39f);
             headCollider.gameObject.transform.localScale = new Vector3(.65f, 1, 1);
@@ -63,6 +67,7 @@ public class PlayerController : MonoBehaviour {
             jumpForce = 1.7f;
             moveSpeed = 9f;
             jumpSpeedMulti = 1.7f;
+            characterCollider.size = new Vector2(1.62f, .8f);
             footCollider.offset = new Vector2(0, -.86f);
             headCollider.offset = new Vector2(0, .69f);
             headCollider.gameObject.transform.localScale = new Vector3(1, 1, 1);
@@ -90,6 +95,10 @@ public class PlayerController : MonoBehaviour {
 
     //Physics stuff
     void FixedUpdate() {
+        if (playerNo == 1 ? (Input.GetAxis("P1.Fall") > 0) : (Input.GetAxis("P2.Fall") > 0))
+            rb2d.gravityScale = 4;
+        else
+            rb2d.gravityScale = 1;
         if(anim.GetBool("Jump"))
             rb2d.velocity = (new Vector2(moveSpeed * direction * jumpSpeedMulti, rb2d.velocity.y));
         else
@@ -104,10 +113,6 @@ public class PlayerController : MonoBehaviour {
             //Debug.Log("in boof's jump method.");
             Jump();
         }
-        if (playerNo == 1 ? (Input.GetAxis("P1.Fall") > 0) : (Input.GetAxis("P2.Fall") > 0))
-            rb2d.gravityScale = 4;
-        else
-            rb2d.gravityScale = 1;
         /*foreach (Collider2D c in ObjectsTouchingFeet)
             Debug.Log(gameObject.name + ": " + c.name);*/
         if ((Physics2D.Raycast(new Vector2(playerPos.x, playerPos.y-.5f) + new Vector2(direction, 0) * 1.9f / 2, new Vector2(direction, 0)).distance <= .1) && timeToBoof <= 0)
@@ -141,8 +146,14 @@ public class PlayerController : MonoBehaviour {
     {
         //Debug.Log("In the jump mehtod");
         rb2d.velocity = new Vector2(rb2d.velocity.x, 0);
+        rb2d.isKinematic = true;
+        rb2d.isKinematic = false;
         rb2d.AddForce(Vector2.up * jumpForce);
-        //timeToJump = .5f;
+        if (rb2d.velocity.y > maxJumpSpeed)
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, maxJumpSpeed);
+        }
+        timeToJump = .5f;
         if (anim != null)
             anim.SetBool("Jump", true);
     }
