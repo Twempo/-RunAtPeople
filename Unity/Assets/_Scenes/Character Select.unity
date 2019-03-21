@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 137413974}
   - component: {fileID: 137413973}
   m_Layer: 5
-  m_Name: GoonIcon
+  m_Name: KirkIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,15 +139,15 @@ RectTransform:
   m_GameObject: {fileID: 137413971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1901526184}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 257, y: -149}
-  m_SizeDelta: {x: 813.3, y: 681.2}
+  m_AnchoredPosition: {x: -5, y: -12}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &137413973
 MonoBehaviour:
@@ -169,8 +169,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 514e6dcac02df6b449970829212372e9, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 33e6fbf0ac9bd4d499a10899c95858c4, type: 3}
+  m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1559,6 +1559,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f55041a3590879a4dacfc637e211bf3f,
         type: 3}
+    - target: {fileID: 8734416234349227818, guid: 8c927876d8fb63841a3087e4e4f3f03f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734416234349227818, guid: 8c927876d8fb63841a3087e4e4f3f03f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5450964271429382435, guid: 8c927876d8fb63841a3087e4e4f3f03f,
         type: 3}
       propertyPath: m_Sprite
@@ -1688,12 +1698,12 @@ PrefabInstance:
     - target: {fileID: 59085038766074948, guid: 8c927876d8fb63841a3087e4e4f3f03f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8295597777332307081, guid: 8c927876d8fb63841a3087e4e4f3f03f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8348749107965098272, guid: 8c927876d8fb63841a3087e4e4f3f03f,
         type: 3}
@@ -1715,5 +1725,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5990460178652331365, guid: 8c927876d8fb63841a3087e4e4f3f03f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6fd6cc7d044147b4dadc193f0430c7b2, type: 2}
+    - target: {fileID: 1277342715177240140, guid: 8c927876d8fb63841a3087e4e4f3f03f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6fd6cc7d044147b4dadc193f0430c7b2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c927876d8fb63841a3087e4e4f3f03f, type: 3}
