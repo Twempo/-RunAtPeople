@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerSprites : MonoBehaviour
 {
     public GameObject PlayerOneGoon, PlayerOneBoof, PlayerTwoGoon, PlayerTwoBoof, PlayerOneKirk, PlayerTwoKirk;
+    //color changing code
+    public SpriteRenderer m_SpriteRenderer;
+    public Color color;
     // Start is called before the first frame update
     void Start()
     {
-        //PlayerSprites.GetChild("PlayerOneGoon").SetActive(true);
-        //PlayerOneGoon.SetActive(false);
         PlayerOneGoon = GameObject.Find("/Canvas/PlayerSprites/PlayerOneGoon");
         PlayerOneGoon.SetActive(false);
         PlayerOneBoof = GameObject.Find("/Canvas/PlayerSprites/PlayerOneBoof");
@@ -22,7 +23,6 @@ public class PlayerSprites : MonoBehaviour
         PlayerTwoKirk.SetActive(false);
         PlayerTwoKirk = GameObject.Find("/Canvas/PlayerSprites/PlayerTwoKirk");
         PlayerTwoKirk.SetActive(false);
-        //GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
     }
 
     // Update is called once per frame
@@ -35,34 +35,26 @@ public class PlayerSprites : MonoBehaviour
         if (player_character.Equals("Player 1 Boof"))
         {
             Debug.Log("Player One has selected Boof.");
-            //var PlayerOneBoof1 = GameObject.Find("PlayerOneBoof");
             PlayerOneBoof.SetActive(true);
-            // Debug.Log(PlayerOneBoof1);
-
         }
         else if (player_character.Equals("Player 1 Goon"))
         {
-            //var PlayerOneGoon = GameObject.Find("PlayerOneGoon");
             PlayerOneGoon.SetActive(true);
         }
         else if (player_character.Equals("Player 2 Boof"))
         {
-            //var PlayerTwoBoof = GameObject.Find("PlayerTwoBoof");
             PlayerTwoBoof.SetActive(true);
         }
         else if (player_character.Equals("Player 2 Goon"))
         {
-            //var PlayerTwoGoon = GameObject.Find("PlayerTwoGoon");
             PlayerTwoGoon.SetActive(true);
         }
         else if (player_character.Equals("Player 1 Kirk"))
         {
-            //var PlayerTwoBoof = GameObject.Find("PlayerTwoBoof");
             PlayerOneKirk.SetActive(true);
         }
         else if (player_character.Equals("Player 2 Kirk"))
         {
-            //var PlayerTwoGoon = GameObject.Find("PlayerTwoGoon");
             PlayerTwoKirk.SetActive(true);
         }
     }

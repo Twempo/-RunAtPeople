@@ -7,13 +7,13 @@ using UnityEngine.Events;
 public class PlayerSelectionText : MonoBehaviour
 {
     public GameObject playerSprites;
-
     public Text playerSelectionText;
     public int currentPlayer;
     public int GOON = 1;
     public int BOOF = 2;
     public Button goon, boof, kirk;
     public PlayerSprites sprites;
+
     //Start is called before the first frame update
     void Start()
     {
