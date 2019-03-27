@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
-    public int LevelBuildIndex = 1;
+    public int LevelBuildIndex = 2;
     public float timeToReset = 0;
 
     int[] points;

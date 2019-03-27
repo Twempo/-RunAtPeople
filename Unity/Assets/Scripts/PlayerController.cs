@@ -56,8 +56,8 @@ public class PlayerController : MonoBehaviour {
         }
         if(character == Character.Boof)
         {
-            jumpForce = 1.525f;
-            moveSpeed = 15f;
+            jumpForce = 1.625f;
+            moveSpeed = 16.3f;
             characterCollider.size = new Vector2(1.53f, .8f);
             footCollider.offset = new Vector2(0, -.7f);
             headCollider.offset = new Vector2(0, .39f);
@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour {
         playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
         if(anim!=null && /*Physics2D.Raycast(transform.position, new Vector2(0, -1)).distance <= .75*/ObjectsTouchingFeet.ToArray().Length>0) {
             anim.SetBool("Jump", false);
-
             /*Debug.Log(playerNo + " Not Jump");
             Debug.DrawRay(transform.position, new Vector2(0, -.75f));*/
         }
