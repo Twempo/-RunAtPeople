@@ -77,6 +77,18 @@ public class PlayerController : MonoBehaviour {
 
     private void Update() {
         playerPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
+        if(anim!=null && /*Physics2D.Raycast(transform.position, new Vector2(0, -1)).distance <= .75*/ObjectsTouchingFeet.ToArray().Length>0) {
+            anim.SetBool("Jump", false);
+
+            /*Debug.Log(playerNo + " Not Jump");
+            Debug.DrawRay(transform.position, new Vector2(0, -.75f));*/
+        }
+        else if(anim != null)
+        {
+            anim.SetBool("Jump", true);
+            /*Debug.Log(playerNo + " Jump");
+            Debug.DrawRay(transform.position, new Vector2(0, -1));*/
+        }
         if (timeToJump > 0) {
             timeToJump -= Time.deltaTime;
         }
@@ -154,8 +166,8 @@ public class PlayerController : MonoBehaviour {
             rb2d.velocity = new Vector2(rb2d.velocity.x, maxJumpSpeed);
         }
         timeToJump = .5f;
-        if (anim != null)
-            anim.SetBool("Jump", true);
+        /*if (anim != null)
+            anim.SetBool("Jump", true);*/
     }
 
     void OnTriggerEnter2D(Collider2D collision)

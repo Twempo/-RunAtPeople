@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &246311945
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4810,12 +4810,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &265036816 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95357794541313472, guid: a504e2d1e550be84cad66dbbd23235a0,
-    type: 3}
-  m_PrefabInstance: {fileID: 653033891}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409018038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4944,7 +4938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1173938953674706, guid: a504e2d1e550be84cad66dbbd23235a0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114047109222604316, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 3}
@@ -4954,13 +4948,13 @@ PrefabInstance:
     - target: {fileID: 114047109222604316, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 3}
       propertyPath: character
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114047109222604316, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 265036816}
+      objectReference: {fileID: 1344179421}
     - target: {fileID: 114047109222604316, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 3}
       propertyPath: footCollider
@@ -4988,7 +4982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1501837432732160, guid: a504e2d1e550be84cad66dbbd23235a0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 70959614266642844, guid: a504e2d1e550be84cad66dbbd23235a0,
         type: 3}
@@ -5015,6 +5009,21 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 653033892}
+    - target: {fileID: 212346326330823270, guid: a504e2d1e550be84cad66dbbd23235a0,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6603774
+      objectReference: {fileID: 0}
+    - target: {fileID: 212346326330823270, guid: a504e2d1e550be84cad66dbbd23235a0,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.12771448
+      objectReference: {fileID: 0}
+    - target: {fileID: 212346326330823270, guid: a504e2d1e550be84cad66dbbd23235a0,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6097148
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a504e2d1e550be84cad66dbbd23235a0, type: 3}
 --- !u!114 &653033892 stripped
@@ -5114,7 +5123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1259159823
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -9795,6 +9804,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1344179421 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95785964898143680, guid: a504e2d1e550be84cad66dbbd23235a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 653033891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1442574772 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114047109222604316, guid: a504e2d1e550be84cad66dbbd23235a0,
@@ -9838,7 +9853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1774110756
 ParticleSystemRenderer:
   serializedVersion: 6
