@@ -11,7 +11,7 @@ public class PlayerSelectionText : MonoBehaviour
     public int currentPlayer;
     public int GOON = 1;
     public int BOOF = 2;
-    public Button goon, boof, kirk;
+    public Button goon, boof, kirk, color, confirm;
     public PlayerSprites sprites;
 
     //Start is called before the first frame update
@@ -26,6 +26,8 @@ public class PlayerSelectionText : MonoBehaviour
         goon.onClick.AddListener(delegate { TaskWithParameters("Goon Button"); });
         boof.onClick.AddListener(delegate { TaskWithParameters("Boof Button"); });
         kirk.onClick.AddListener(delegate { TaskWithParameters("Kirk Button"); });
+        color.onClick.AddListener(delegate { TaskWithParameters("Color Change Button"); });
+        confirm.onClick.AddListener(delegate { TaskWithParameters("Confirm Button"); });
 
         Instantiate(sprites, Vector3.zero, Quaternion.identity, transform);
     }
@@ -38,30 +40,29 @@ public class PlayerSelectionText : MonoBehaviour
     }
     public void TaskOnClick()
     {
-        Debug.Log("You have clicked the button");
+        //Debug.Log("You have clicked the button");
     }
     void TaskWithParameters(string message)
     {
-        Debug.Log(message);
-        if(message.Equals("Boof Button") && currentPlayer==1)
+        //Debug.Log("HAAAAAAAAAAAAAAALP");
+        if (message.Equals("Boof Button") && currentPlayer == 1)
         {
             sprites.PlayerSelected("Player 1 Boof");
         }
-        else if(message.Equals("Goon Button") && currentPlayer==1)
+        else if (message.Equals("Goon Button") && currentPlayer == 1)
         {
             sprites.PlayerSelected("Player 1 Goon");
         }
         else if (message.Equals("Kirk Button") && currentPlayer == 1)
         {
             sprites.PlayerSelected("Player 1 Kirk");
-            Debug.Log("Player Uno Kirk.");
+            //Debug.Log("Player Uno Kirk.");
         }
-
-        if (message.Equals("Boof Button") && currentPlayer==2)
+        if (message.Equals("Boof Button") && currentPlayer == 2)
         {
             sprites.PlayerSelected("Player 2 Boof");
         }
-        else if(message.Equals("Goon Button") && currentPlayer==2)
+        else if (message.Equals("Goon Button") && currentPlayer == 2)
         {
             sprites.PlayerSelected("Player 2 Goon");
         }
@@ -82,7 +83,20 @@ public class PlayerSelectionText : MonoBehaviour
         {
             sprites.PlayerSelected("Player 3 Kirk");
         }
-
-        currentPlayer++;
+        if (message.Equals("Color Change Button"))
+        {
+            Debug.Log("Player " + currentPlayer);
+            sprites.PlayerSelected("Player " + currentPlayer);
+            return;
+        }
+        if (message.Equals("Confirm Button") && currentPlayer == 2) 
+        {
+            //go to next scene
+        }
+        else if(message.Equals("Confirm Button"))
+        {
+            //Debug.Log(currentPlayer);
+            currentPlayer++;
+        }
     }
 }
