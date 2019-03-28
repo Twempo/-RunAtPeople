@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
     public int LevelBuildIndex = 2;
     public float timeToReset = 0;
+    public GameObject transition;
 
     int[] points;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour {
 
     public void ResetLevel() {
         if (timeToReset <= 0) {
+            transition.SetActive(true);
             StartCoroutine(FollowThroughA(SceneManager.UnloadSceneAsync(LevelBuildIndex)));
             timeToReset = 1f;
         }
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour {
         while (!op.isDone) {
             yield return new WaitForEndOfFrame();
         }
+        yield return new WaitForSeconds(1.5f);
         StartCoroutine(FollowThroughB(SceneManager.LoadSceneAsync(LevelBuildIndex, LoadSceneMode.Additive)));
     }
 
@@ -49,6 +52,8 @@ public class GameManager : MonoBehaviour {
         while(!op.isDone) {
             yield return new WaitForEndOfFrame();
         }
+        transition.SetActive(false);
+
         foreach (PlayerController player in FindObjectsOfType<PlayerController>()) {
 
         }
