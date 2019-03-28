@@ -11,11 +11,11 @@ public class Foot : MonoBehaviour {
     {
         try
         {
-            if (collision.gameObject.tag != "Player" && Physics2D.Raycast(player.playerPos, new Vector2(0, -1)).distance <= .75)
+            if (collision.gameObject.tag != "Player" && /*Math.Abs(collision.transform.position.x - player.footCollider.transform.position.x)<5 &&*/ Physics2D.Raycast(player.playerPos, new Vector2(0, -1)).distance <= .75)
             {
                 player.ObjectsTouchingFeet.Add(collision);
-                if (player.anim != null)
-                    player.anim.SetBool("Jump", false);
+                /*if (player.anim != null)
+                    player.anim.SetBool("Jump", false);*/
                 //Debug.Log("halp");
             }
         }
