@@ -8,7 +8,7 @@ public class PlayerSelectionText : MonoBehaviour
 {
     public GameObject playerSprites;
     public Text playerSelectionText;
-    public int currentPlayer;
+    public double currentPlayer;
     public int GOON = 1;
     public int BOOF = 2;
     public Button goon, boof, kirk, color, confirm;
@@ -48,6 +48,7 @@ public class PlayerSelectionText : MonoBehaviour
         if (message.Equals("Boof Button") && currentPlayer == 1)
         {
             sprites.PlayerSelected("Player 1 Boof");
+            //currentPlayer = 1.5;
         }
         else if (message.Equals("Goon Button") && currentPlayer == 1)
         {
@@ -96,6 +97,7 @@ public class PlayerSelectionText : MonoBehaviour
         else if(message.Equals("Confirm Button"))
         {
             //Debug.Log(currentPlayer);
+            sprites.PlayerSelected("Player "+currentPlayer+" Done");
             currentPlayer++;
         }
     }

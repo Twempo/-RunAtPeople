@@ -7,7 +7,7 @@ public class PlayerSprites : MonoBehaviour
     public GameObject PlayerOneGoon, PlayerOneBoof, PlayerTwoGoon, PlayerTwoBoof, PlayerOneKirk, PlayerTwoKirk;
     //color changing code
     public SpriteRenderer sp_PlayerOneGoon, sp_PlayerOneBoof, sp_PlayerTwoGoon, sp_PlayerTwoBoof, sp_PlayerOneKirk, sp_PlayerTwoKirk;
-    public Color red, green, grey, blue;
+    public Color red, green, grey, blue, forbidden;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,11 +37,11 @@ public class PlayerSprites : MonoBehaviour
         sp_PlayerTwoKirk = PlayerTwoKirk.GetComponent<SpriteRenderer>();
 
         sp_PlayerOneGoon.color = red;
-        sp_PlayerOneBoof.color = green;
-        sp_PlayerTwoGoon.color = red;
+        sp_PlayerOneBoof.color = red;
+        sp_PlayerTwoGoon.color = green;
         sp_PlayerTwoBoof.color = green;
-        sp_PlayerOneKirk.color = blue;
-        sp_PlayerTwoKirk.color = blue;
+        sp_PlayerOneKirk.color = red;
+        sp_PlayerTwoKirk.color = green;
     }
 
     // Update is called once per frame
@@ -56,32 +56,58 @@ public class PlayerSprites : MonoBehaviour
         //Character Activation
         if (player_character.Equals("Player 1 Boof"))
         {
-            //Debug.Log("Player One has selected Boof.");
             PlayerOneBoof.SetActive(true);
+            PlayerOneGoon.SetActive(false);
+            PlayerOneKirk.SetActive(false);
         }
         else if (player_character.Equals("Player 1 Goon"))
         {
+            PlayerOneBoof.SetActive(false);
             PlayerOneGoon.SetActive(true);
+            PlayerOneKirk.SetActive(false);
         }
         else if (player_character.Equals("Player 2 Boof"))
         {
             PlayerTwoBoof.SetActive(true);
+            PlayerTwoGoon.SetActive(false);
+            PlayerTwoKirk.SetActive(false);
         }
         else if (player_character.Equals("Player 2 Goon"))
         {
+            PlayerTwoBoof.SetActive(false);
             PlayerTwoGoon.SetActive(true);
+            PlayerTwoKirk.SetActive(false);
         }
         else if (player_character.Equals("Player 1 Kirk"))
         {
+            PlayerOneBoof.SetActive(false);
+            PlayerOneGoon.SetActive(false);
             PlayerOneKirk.SetActive(true);
         }
         else if (player_character.Equals("Player 2 Kirk"))
         {
+            PlayerTwoBoof.SetActive(false);
+            PlayerTwoGoon.SetActive(false);
             PlayerTwoKirk.SetActive(true);
         }
-
+        //Disable player one's color for player two
+        if(player_character.Equals("Player 1 Done"))
+        {
+            if (PlayerOneBoof.active)
+                forbidden = sp_PlayerOneBoof.color;
+            else if (PlayerOneGoon.active)
+                forbidden = sp_PlayerOneGoon.color;
+            else if (PlayerOneKirk.active)
+                forbidden = sp_PlayerOneKirk.color;
+            if(forbidden == green)
+            {
+                sp_PlayerTwoBoof.color = red;
+                sp_PlayerTwoGoon.color = red;
+                sp_PlayerTwoKirk.color = red;
+            }
+        }
         //Player Colors
-        if (player_character.Equals("Player 1"))
+        if (player_character.Equals("Player 1") && !PlayerTwoGoon.active && !PlayerTwoBoof.active)
         {
             if (PlayerOneGoon.active)
             {
@@ -126,42 +152,58 @@ public class PlayerSprites : MonoBehaviour
         { 
             if (PlayerTwoGoon.active)
             {
-                if (sp_PlayerTwoGoon.color == red)
+                if (sp_PlayerTwoGoon.color == red && forbidden!=blue)
                 {
                     sp_PlayerTwoGoon.color = blue;
                 }
-                else if (sp_PlayerTwoGoon.color == blue)
+                else if (sp_PlayerTwoGoon.color == blue && forbidden != green)
                 {
                     sp_PlayerTwoGoon.color = green;
                 }
-                else if (sp_PlayerTwoGoon.color == green)
+                else if (sp_PlayerTwoGoon.color == green && forbidden != grey)
                 {
                     sp_PlayerTwoGoon.color = grey;
                 }
-                else if (sp_PlayerTwoGoon.color == grey)
+                else if (sp_PlayerTwoGoon.color == grey && forbidden != red)
                 {
                     sp_PlayerTwoGoon.color = red;
                 }
+                else if (sp_PlayerTwoGoon.color == grey && forbidden == red)
+                    sp_PlayerTwoGoon.color = blue;
+                else if (sp_PlayerTwoGoon.color == red && forbidden == blue)
+                    sp_PlayerTwoGoon.color = green;
+                else if (sp_PlayerTwoGoon.color == blue && forbidden == green)
+                    sp_PlayerTwoGoon.color = grey;
+                else if (sp_PlayerTwoGoon.color == green && forbidden == grey)
+                    sp_PlayerTwoGoon.color = red;
             }
             if (PlayerTwoBoof.active)
             {
-                Debug.Log("BOOOOOOOOOOOOOOOOOF");
-                if (sp_PlayerTwoBoof.color == red)
+                //Debug.Log("BOOOOOOOOOOOOOOOOOF");
+                if (sp_PlayerTwoBoof.color == red && forbidden != blue)
                 {
                     sp_PlayerTwoBoof.color = blue;
                 }
-                else if (sp_PlayerTwoBoof.color == blue)
+                else if (sp_PlayerTwoBoof.color == blue && forbidden != green)
                 {
                     sp_PlayerTwoBoof.color = green;
                 }
-                else if (sp_PlayerTwoBoof.color == green)
+                else if (sp_PlayerTwoBoof.color == green && forbidden != grey)
                 {
                     sp_PlayerTwoBoof.color = grey;
                 }
-                else if (sp_PlayerTwoBoof.color == grey)
+                else if (sp_PlayerTwoBoof.color == grey && forbidden != red)
                 {
                     sp_PlayerTwoBoof.color = red;
                 }
+                else if (sp_PlayerTwoBoof.color == grey && forbidden == red)
+                    sp_PlayerTwoBoof.color = blue;
+                else if (sp_PlayerTwoBoof.color == red && forbidden == blue)
+                    sp_PlayerTwoBoof.color = green;
+                else if (sp_PlayerTwoBoof.color == blue && forbidden == green)
+                    sp_PlayerTwoBoof.color = grey;
+                else if (sp_PlayerTwoBoof.color == green && forbidden == grey)
+                    sp_PlayerTwoBoof.color = red;
             }
         }
     }
