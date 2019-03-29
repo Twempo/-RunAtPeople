@@ -265,7 +265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1328458646907364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab12d53e5a662f468756b127b23b83b, type: 3}
+  m_Script: {fileID: 11500000, guid: eb79063a33c5c424daf31c108d054442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   character: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
   maxJumpSpeed: 5
   playerNo: 1
   playerPos: {x: 0, y: 0}
-  characterCollider: {fileID: 70006582696157700}
+  characterCollider: {fileID: 70746306960992462}
   jumpForce: 0
   moveSpeed: 0
   jumpSpeedMulti: 1
