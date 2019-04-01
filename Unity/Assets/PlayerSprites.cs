@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSprites : MonoBehaviour
 {
-    public GameObject PlayerOneGoon, PlayerOneBoof, PlayerTwoGoon, PlayerTwoBoof, PlayerOneKirk, PlayerTwoKirk;
+    public GameObject PlayerOneGoon, PlayerOneBoof, PlayerTwoGoon, PlayerTwoBoof, PlayerOneKirk, PlayerTwoKirk, PlayerOneKirkStatic, PlayerTwoKirkStatic;
     //color changing code
     public SpriteRenderer sp_PlayerOneGoon, sp_PlayerOneBoof, sp_PlayerTwoGoon, sp_PlayerTwoBoof, sp_PlayerOneKirk, sp_PlayerTwoKirk;
     public Color red, green, grey, blue, forbidden;
@@ -20,9 +20,13 @@ public class PlayerSprites : MonoBehaviour
         PlayerTwoBoof = GameObject.Find("/Canvas/PlayerSprites/PlayerTwoBoof");
         PlayerTwoBoof.SetActive(false);
         PlayerOneKirk = GameObject.Find("/Canvas/PlayerSprites/PlayerOneKirk");
-        PlayerTwoKirk.SetActive(false);
+        PlayerOneKirk.SetActive(false);
         PlayerTwoKirk = GameObject.Find("/Canvas/PlayerSprites/PlayerTwoKirk");
         PlayerTwoKirk.SetActive(false);
+        //PlayerOneKirkStatic = GameObject.Find("/Canvas/PlayerSprites/PlayerOneKirkStatic");
+        PlayerOneKirkStatic.SetActive(false);
+       // PlayerTwoKirkStatic = GameObject.Find("/Canvas/PlayerSprites/PlayerTwoKirkStatic");
+        PlayerTwoKirkStatic.SetActive(false);
 
         //colors
         red = new Color(255, 0, 0);
@@ -59,39 +63,45 @@ public class PlayerSprites : MonoBehaviour
             PlayerOneBoof.SetActive(true);
             PlayerOneGoon.SetActive(false);
             PlayerOneKirk.SetActive(false);
+            PlayerOneKirkStatic.SetActive(false);
         }
         else if (player_character.Equals("Player 1 Goon"))
         {
             PlayerOneBoof.SetActive(false);
             PlayerOneGoon.SetActive(true);
             PlayerOneKirk.SetActive(false);
+            PlayerOneKirkStatic.SetActive(false);
         }
         else if (player_character.Equals("Player 2 Boof"))
         {
             PlayerTwoBoof.SetActive(true);
             PlayerTwoGoon.SetActive(false);
             PlayerTwoKirk.SetActive(false);
+            PlayerTwoKirkStatic.SetActive(false);
         }
         else if (player_character.Equals("Player 2 Goon"))
         {
             PlayerTwoBoof.SetActive(false);
             PlayerTwoGoon.SetActive(true);
             PlayerTwoKirk.SetActive(false);
+            PlayerTwoKirkStatic.SetActive(false);
         }
         else if (player_character.Equals("Player 1 Kirk"))
         {
             PlayerOneBoof.SetActive(false);
             PlayerOneGoon.SetActive(false);
             PlayerOneKirk.SetActive(true);
+            PlayerOneKirkStatic.SetActive(true);
         }
         else if (player_character.Equals("Player 2 Kirk"))
         {
             PlayerTwoBoof.SetActive(false);
             PlayerTwoGoon.SetActive(false);
             PlayerTwoKirk.SetActive(true);
+            PlayerTwoKirkStatic.SetActive(true);
         }
         //Disable player one's color for player two
-        if(player_character.Equals("Player 1 Done"))
+        if (player_character.Equals("Player 1 Done"))
         {
             if (PlayerOneBoof.active)
                 forbidden = sp_PlayerOneBoof.color;
@@ -145,6 +155,25 @@ public class PlayerSprites : MonoBehaviour
                 else if (sp_PlayerOneBoof.color == grey)
                 {
                     sp_PlayerOneBoof.color = red;
+                }
+            }
+            if (PlayerOneKirk.active)
+            {
+                if (sp_PlayerOneKirk.color == red)
+                {
+                    sp_PlayerOneKirk.color = blue;
+                }
+                else if (sp_PlayerOneKirk.color == blue)
+                {
+                    sp_PlayerOneKirk.color = green;
+                }
+                else if (sp_PlayerOneKirk.color == green)
+                {
+                    sp_PlayerOneKirk.color = grey;
+                }
+                else if (sp_PlayerOneKirk.color == grey)
+                {
+                    sp_PlayerOneKirk.color = red;
                 }
             }
         }
@@ -204,6 +233,34 @@ public class PlayerSprites : MonoBehaviour
                     sp_PlayerTwoBoof.color = grey;
                 else if (sp_PlayerTwoBoof.color == green && forbidden == grey)
                     sp_PlayerTwoBoof.color = red;
+            }
+            if (PlayerTwoKirk.active)
+            {
+                //Debug.Log("BOOOOOOOOOOOOOOOOOF");
+                if (sp_PlayerTwoKirk.color == red && forbidden != blue)
+                {
+                    sp_PlayerTwoKirk.color = blue;
+                }
+                else if (sp_PlayerTwoKirk.color == blue && forbidden != green)
+                {
+                    sp_PlayerTwoKirk.color = green;
+                }
+                else if (sp_PlayerTwoKirk.color == green && forbidden != grey)
+                {
+                    sp_PlayerTwoKirk.color = grey;
+                }
+                else if (sp_PlayerTwoKirk.color == grey && forbidden != red)
+                {
+                    sp_PlayerTwoKirk.color = red;
+                }
+                else if (sp_PlayerTwoKirk.color == grey && forbidden == red)
+                    sp_PlayerTwoKirk.color = blue;
+                else if (sp_PlayerTwoKirk.color == red && forbidden == blue)
+                    sp_PlayerTwoKirk.color = green;
+                else if (sp_PlayerTwoKirk.color == blue && forbidden == green)
+                    sp_PlayerTwoKirk.color = grey;
+                else if (sp_PlayerTwoKirk.color == green && forbidden == grey)
+                    sp_PlayerTwoKirk.color = red;
             }
         }
     }
