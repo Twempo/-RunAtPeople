@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
 
     public Animator anim;
 
+    public PlayerStorer storer;
+
     public List<Collider2D> ObjectsTouchingFeet;
 
     private void Awake() {
@@ -45,7 +47,22 @@ public class PlayerController : MonoBehaviour {
         timeToBoof = 0;
         playerPos = new Vector2(transform.position.x, transform.position.y);
 
-        if(character == Character.Goon)
+        switch (PlayerPrefs.GetString("P"+playerNo+".Name")) {
+            case "Boof":
+                character = Character.Boof;
+                break;
+            case "Goon":
+                character = Character.Goon;
+                break;
+            case "Kirk":
+                character = Character.Kirk;
+                break;
+            default:
+                character = Character.Boof;
+                break;
+        }
+
+        if (character == Character.Goon)
         {
             jumpForce = 1.875f;
             moveSpeed = 11f;
@@ -53,6 +70,9 @@ public class PlayerController : MonoBehaviour {
             footCollider.offset = new Vector2(0, -.86f);
             headCollider.offset = new Vector2(0, .69f);
             headCollider.gameObject.transform.localScale = new Vector3(1, 1, 1);
+            anim = storer.goonAnim;
+            storer.goon.SetActive(true);
+            storer.goon.GetComponent<SpriteRenderer>().color = new Color(PlayerPrefs.GetFloat("P" + playerNo + ".R"), PlayerPrefs.GetFloat("P" + playerNo + ".G"), PlayerPrefs.GetFloat("P" + playerNo + ".B"));
         }
         if(character == Character.Boof)
         {
@@ -62,6 +82,9 @@ public class PlayerController : MonoBehaviour {
             footCollider.offset = new Vector2(0, -.7f);
             headCollider.offset = new Vector2(0, .39f);
             headCollider.gameObject.transform.localScale = new Vector3(.65f, 1, 1);
+            anim = storer.boofAnim;
+            storer.boof.SetActive(true);
+            storer.boof.GetComponent<SpriteRenderer>().color = new Color(PlayerPrefs.GetFloat("P" + playerNo + ".R"), PlayerPrefs.GetFloat("P" + playerNo + ".G"), PlayerPrefs.GetFloat("P" + playerNo + ".B"));
         }
         if (character == Character.Kirk) {
             jumpForce = 1.7f;
@@ -71,6 +94,9 @@ public class PlayerController : MonoBehaviour {
             footCollider.offset = new Vector2(0, -.86f);
             headCollider.offset = new Vector2(0, .69f);
             headCollider.gameObject.transform.localScale = new Vector3(1, 1, 1);
+            anim = storer.kirkAnim;
+            storer.kirk.SetActive(true);
+            storer.kirk.GetComponent<SpriteRenderer>().color = new Color(PlayerPrefs.GetFloat("P" + playerNo + ".R"), PlayerPrefs.GetFloat("P" + playerNo + ".G"), PlayerPrefs.GetFloat("P" + playerNo + ".B"));
         }
         jumpForce *= 732;
     }

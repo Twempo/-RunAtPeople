@@ -92,7 +92,7 @@ public class PlayerSelectionText : MonoBehaviour
         }
         if (message.Equals("Confirm Button") && currentPlayer == 2) 
         {
-            //go to next scene
+            //FindObjectOfType<SceneController>().EndCharSelect(player 1 color, player 2 color, player 1 character, player 2 character);
         }
         else if(message.Equals("Confirm Button"))
         {
