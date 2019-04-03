@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         transition.SetActive(false);
-        if (points[0] == 21 || points[1] == 21)
+        if (points[0] == 1 || points[1] == 1)
             SceneManager.LoadScene(0);
         else
             transition.SetActive(false);

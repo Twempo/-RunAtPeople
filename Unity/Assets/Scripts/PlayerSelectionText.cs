@@ -92,6 +92,7 @@ public class PlayerSelectionText : MonoBehaviour
         if (message.Equals("Confirm Button") && currentPlayer == 2) 
         {
             Debug.Log("Scene has ended");
+            Debug.Log(sprites.GetPlayerTwoColor().ToString());
             FindObjectOfType<SceneController>().EndCharSelect(sprites.GetPlayerOneColor(), sprites.GetPlayerTwoColor(), sprites.GetPlayerOne(), sprites.GetPlayerTwo());
         }
         else if(message.Equals("Confirm Button"))

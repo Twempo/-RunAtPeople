@@ -31,7 +31,7 @@ public class PlayerSprites : MonoBehaviour
         //colors
         red = new Color(255, 0, 0);
         green = Color.green;
-        grey = new Color(175, 175, 175);
+        grey = new Color(200, 200, 200);
         blue = new Color(0, 255, 246);
         sp_PlayerOneGoon = PlayerOneGoon.GetComponent<SpriteRenderer>();
         sp_PlayerOneBoof = PlayerOneBoof.GetComponent<SpriteRenderer>();
@@ -82,8 +82,10 @@ public class PlayerSprites : MonoBehaviour
             return sp_PlayerTwoBoof.color;
         else if (PlayerOneKirk.active)
             return sp_PlayerTwoKirk.color;
-        else
+        else {
+            Debug.Log("Here");
             return sp_PlayerTwoGoon.color;
+        }
     }
     // Update is called once per frame
     void Update()

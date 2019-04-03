@@ -141,7 +141,6 @@ public class PlayerController : MonoBehaviour {
         else
             rb2d.velocity = (new Vector2(moveSpeed * direction, rb2d.velocity.y));
         //rb2d.GetContacts()
-        Debug.Log(playerNo + ", " + ObjectsTouchingFeet.ToArray()[0].ToString());
         if ((Input.GetAxis("P1.Jump") > 0)&&playerNo==1&&ObjectsTouchingFeet.ToArray().Length>0 && timeToJump <= 0) {
             Jump();
         }
