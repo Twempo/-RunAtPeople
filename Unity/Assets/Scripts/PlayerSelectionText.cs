@@ -44,11 +44,10 @@ public class PlayerSelectionText : MonoBehaviour
     }
     void TaskWithParameters(string message)
     {
-        //Debug.Log("HAAAAAAAAAAAAAAALP");
         if (message.Equals("Boof Button") && currentPlayer == 1)
         {
             sprites.PlayerSelected("Player 1 Boof");
-            //currentPlayer = 1.5;
+            Debug.Log(message);
         }
         else if (message.Equals("Goon Button") && currentPlayer == 1)
         {
@@ -92,7 +91,8 @@ public class PlayerSelectionText : MonoBehaviour
         }
         if (message.Equals("Confirm Button") && currentPlayer == 2) 
         {
-            //FindObjectOfType<SceneController>().EndCharSelect(player 1 color, player 2 color, player 1 character, player 2 character);
+            Debug.Log("Scene has ended");
+            FindObjectOfType<SceneController>().EndCharSelect(sprites.GetPlayerOneColor(), sprites.GetPlayerTwoColor(), sprites.GetPlayerOne(), sprites.GetPlayerTwo());
         }
         else if(message.Equals("Confirm Button"))
         {

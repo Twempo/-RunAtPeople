@@ -48,6 +48,43 @@ public class PlayerSprites : MonoBehaviour
         sp_PlayerTwoKirk.color = green;
     }
 
+    public PlayerController.Character GetPlayerOne()
+    {
+        if (PlayerOneBoof.active)
+            return PlayerController.Character.Boof;
+        else if (PlayerOneKirk.active)
+            return PlayerController.Character.Kirk;
+        else
+            return PlayerController.Character.Goon;
+    }
+
+    public PlayerController.Character GetPlayerTwo()
+    {
+        if (PlayerTwoBoof.active)
+            return PlayerController.Character.Boof;
+        else if (PlayerTwoKirk.active)
+            return PlayerController.Character.Kirk;
+        else
+            return PlayerController.Character.Goon;
+    }
+    public Color GetPlayerOneColor()
+    {
+        if (PlayerOneBoof.active)
+            return sp_PlayerOneBoof.color;
+        else if (PlayerOneKirk.active)
+            return sp_PlayerOneKirk.color;
+        else
+            return sp_PlayerOneGoon.color;
+    }
+    public Color GetPlayerTwoColor()
+    {
+        if (PlayerTwoBoof.active)
+            return sp_PlayerTwoBoof.color;
+        else if (PlayerOneKirk.active)
+            return sp_PlayerTwoKirk.color;
+        else
+            return sp_PlayerTwoGoon.color;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -60,10 +97,12 @@ public class PlayerSprites : MonoBehaviour
         //Character Activation
         if (player_character.Equals("Player 1 Boof"))
         {
+            Debug.Log("In the boof method");
             PlayerOneBoof.SetActive(true);
             PlayerOneGoon.SetActive(false);
             PlayerOneKirk.SetActive(false);
             PlayerOneKirkStatic.SetActive(false);
+            //return;
         }
         else if (player_character.Equals("Player 1 Goon"))
         {
